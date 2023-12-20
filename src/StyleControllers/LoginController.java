@@ -41,7 +41,7 @@ public class LoginController{
             } 
             Scene scene = new Scene(new MainPage(primaryStage, worker).getRoot(), 800, 600);
             primaryStage.setScene(scene);
-            primaryStage.setFullScreen(true);
+            primaryStage.setMaximized(true);
         }
             else {
                 wrongPassword = new Label("Wrong Password");

@@ -228,7 +228,7 @@ public class WorkerData implements Serializable {
             stage.close();
         }
         primarystage.setScene(new Scene(new MainPage(primarystage, workertemp).getRoot(),800, 600));
-        primarystage.setFullScreen(true);
+        primarystage.setMaximized(true);
         });
         
 

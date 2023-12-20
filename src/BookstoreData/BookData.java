@@ -154,7 +154,7 @@ public class BookData implements Serializable {
 				boolean res = writeBookToFile(newBook);
 				books.add(newBook);
 				primaryStage.setScene(new Scene(new MainPage(primaryStage, temp).getRoot()));
-        		primaryStage.setFullScreen(true);
+        		primaryStage.setMaximized(true);
 				// primaryStage.close();
 				stage.close();
 			}

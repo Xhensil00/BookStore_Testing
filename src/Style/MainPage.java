@@ -329,7 +329,7 @@ public class MainPage{
             books.addBooksToStock(new BuyOrders(bookIsbns, quantity,TotalBookPrice,worker.getFullName()));
             BookInfoHolder.getChildren().clear();
             primaryStage.setScene(new Scene(new MainPage(primaryStage, worker).getRoot(), 800, 600));
-            primaryStage.setFullScreen(true);
+            primaryStage.setMaximized(true);
        });
 
        
@@ -365,7 +365,7 @@ public class MainPage{
         workers.rewirteFile();
         BookInfoHolder.getChildren().clear();
         primaryStage.setScene(new Scene(new MainPage(primaryStage, worker).getRoot(), 800, 600));
-        primaryStage.setFullScreen(true);
+        primaryStage.setMaximized(true);
         });
 
 
@@ -592,7 +592,7 @@ public class MainPage{
             workers.deleteWorker(tempworker);
             EmployeeInfoHolder.getChildren().clear();
             primaryStage.setScene(new Scene(new MainPage(primaryStage, this.worker).getRoot(),800, 600));
-            primaryStage.setFullScreen(true);
+            primaryStage.setMaximized(true);
         });
 
         editWorkerBtn.setOnAction(e -> {
@@ -600,7 +600,7 @@ public class MainPage{
             ,permitionToCheckLib, permitionToPurchase, permitionToBill);
             EmployeeInfoHolder.getChildren().clear();
             primaryStage.setScene(new Scene(new MainPage(primaryStage, this.worker).getRoot(),800, 600));
-            primaryStage.setFullScreen(true);
+            primaryStage.setMaximized(true);
         });
 
         workerEmail.setOnMouseClicked(e -> {
