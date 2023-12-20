@@ -12,14 +12,14 @@ public class WorkerTest {
 
     @BeforeEach
     public void setUp() {
-        worker = new WorkerDummy("John Doe", "123456789", "john@example.com", "1990-01-01", 2500f, "password123", Worker.ACCESSLEVEL.LIBRARIAN, Gender.MALE);
+        worker = new WorkerDummy("Gezim Pasticja", "123456789", "pasticja@example.com", "1990-01-01", 2500f, "password123", Worker.ACCESSLEVEL.LIBRARIAN, Gender.MALE);
     }
 
     @Test
     public void testGetters() {
-        assertEquals("John Doe", worker.getFullName());
+        assertEquals("Gezim Pasticja", worker.getFullName());
         assertEquals("123456789", worker.getPhone());
-        assertEquals("john@example.com", worker.getEmail());
+        assertEquals("pasticja@example.com", worker.getEmail());
         assertEquals(2500f, worker.getSalary(), 0.01);
         assertEquals("password123", worker.getPassword());
         assertEquals("1990-01-01", worker.getDateOfBirth());
@@ -30,14 +30,14 @@ public class WorkerTest {
 
     @Test
     public void testSetters() {
-        worker.setFullName("Jane Doe");
-        assertEquals("Jane Doe", worker.getFullName());
+        worker.setFullName("Tingulli 3nt");
+        assertEquals("Tingulli 3nt", worker.getFullName());
 
         worker.setPhone("987654321");
         assertEquals("987654321", worker.getPhone());
 
-        worker.setEmail("jane@example.com");
-        assertEquals("jane@example.com", worker.getEmail());
+        worker.setEmail("tuna@example.com");
+        assertEquals("tuna@example.com", worker.getEmail());
 
         worker.setSalary(3000f);
         assertEquals(3000f, worker.getSalary(), 0.01);
