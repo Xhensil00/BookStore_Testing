@@ -134,9 +134,9 @@ public class MainPage{
         PersonalInfo = new VBox(25);
         Image profileImage;
         if(worker.getGender().equals(Gender.FEMALE)){
-            profileImage = new Image(new FileInputStream("src\\Images\\Woman.png"));
+            profileImage = new Image(new FileInputStream("src/Images/Woman.png"));
         }else{
-            profileImage = new Image(new FileInputStream("src\\Images\\Man.png"));
+            profileImage = new Image(new FileInputStream("src/Images/Man.png"));
         }
 
         Circle circle = new Circle(125, 125, 125);
