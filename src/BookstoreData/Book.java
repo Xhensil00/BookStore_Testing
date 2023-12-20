@@ -170,7 +170,8 @@ public class Book implements Serializable {
     }
 
     public void removeStock(int amount) {
-        this.stock -= amount;
+        if(this.stock-amount>=0)
+		    this.stock -= amount;
     }
 
     public void addStock(int amount) {
