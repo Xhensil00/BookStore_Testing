@@ -47,27 +47,6 @@ public class Book implements Serializable {
 	public void addGenre(Genre genre) {
 		this.genres.add(genre);
 	}
-
-	public void addGenres(Genre...genres) {
-		for(Genre genre : genres)
-			this.addGenre(genre);
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public boolean isPaperback() {
-		return paperback;
-	}
-
-	public void setPaperback(boolean paperback) {
-		this.paperback = paperback;
-	}
 	
 
 
@@ -80,10 +59,6 @@ public class Book implements Serializable {
 
     public enum Genre {
         MYSTRERY, ACTION, HISTORICAL, DYSTOPIAN, FANTASY 
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
     }
 
     public String getIsbn13() {
@@ -120,21 +95,6 @@ public class Book implements Serializable {
     public void setAuthor(String authorP) {
         this.authorP = new SimpleStringProperty(authorP);
     }
-
-    public void setGenres(ArrayList<Genre> genres) {
-        String temp = "";
-		for (Genre g: genres) {
-			temp.concat(g.toString() + ", ");
-		}
-		this.genreP = new SimpleStringProperty(temp);
-    }
-
-	public String getGenre() {
-		if(genreP == null) {
-			setGenres(genres);
-		}
-		return genreP.get().toString();
-	}
 
 	public void setStock (int stock) {
 		this.stockP = new SimpleStringProperty(Integer.toString(stock));
@@ -179,21 +139,6 @@ public class Book implements Serializable {
     }
 
     public int getStockInt() {
-        return stock;
-    }
-
-
-	public Object getPUBLISHER() {
-		return null;
-	}
-
-
-    public Object getQUANTITY() {
-        return null;
-    }
-
-
-    public Object getLANGUAGE() {
-        return null;
+        return this.stock;
     }
 }
