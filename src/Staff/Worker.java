@@ -41,9 +41,6 @@ public abstract class Worker implements Serializable {
     public double getTotalBuys() {
         return totalBuys;
     }
-    public void addBuys(double totalPurchases) {
-        this.totalBuys += totalPurchases;
-    }
     public String getFullName() {
         return fullName;
     }
@@ -117,5 +114,9 @@ public abstract class Worker implements Serializable {
     }
     public enum ACCESSLEVEL{
         ADMIN,MANAGER,LIBRARIAN
+    }
+
+    public void setGender(Gender gender){
+        this.gender = gender;
     }
 }
