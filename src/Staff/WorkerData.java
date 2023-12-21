@@ -80,7 +80,7 @@ public class WorkerData implements Serializable {
 			return false;
 		}
 	}
-    private boolean writeWorkerToFile(Worker newWorker) {
+    public boolean writeWorkerToFile(Worker newWorker) {
 		try {
 			
 			FileOutputStream outputStream = new FileOutputStream(file, true);
@@ -320,6 +320,13 @@ public class WorkerData implements Serializable {
     }
     public Worker getWorker(int index){
         return workerData.get(index);
+    }
+
+    public File getFile() {
+        return file;
+    }
+    public void setFile(File file) {
+        this.file = file;
     }
 }
 
