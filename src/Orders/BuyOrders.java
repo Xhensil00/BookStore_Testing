@@ -30,7 +30,7 @@ public class BuyOrders implements Serializable {
         if (time==0) {
            this.time=System.currentTimeMillis();
          }
-        if (!testing) {
+        if (testing) {
            writeToFile();
            addToDatabase();
         }
