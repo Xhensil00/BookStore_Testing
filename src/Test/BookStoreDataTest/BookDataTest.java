@@ -8,6 +8,7 @@ import org.junit.jupiter.api.io.TempDir;
 import java.io.*;
 import java.util.ArrayList;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookDataTest {
@@ -53,11 +54,13 @@ public class BookDataTest {
         ArrayList<Integer> quantities = new ArrayList<>();
         isbns.add(book.getIsbn13());
         quantities.add(5);
-        BuyOrders buyOrder = new BuyOrders(isbns, quantities, 100.0, "Admin");
 
+        BuyOrders buyOrder = new BuyOrders(isbns, quantities, 100.0, "Admin");
+        buyOrder.setTestingTrue();
         bookData.addBooksToStock(buyOrder);
 
         assertEquals(5, bookData.getBookQuantity(book.getIsbn13()));
+        buyOrder.setTestingFalse();
     }
 
     @Test
