@@ -24,6 +24,7 @@ public class BookDataTest {
     public void setUp() throws IOException {
         tempFile = new File(tempFolder, "tempBookDataFile.dat");
         tempFile.createNewFile();
+        BookData.setTestingTrue();
         bookData = new BookData();
         book = new Book("ISBN123", "Book Title", "Description", 20.0f, "Author", true, 0);
         bookData.getBooks().add(book);
@@ -35,6 +36,7 @@ public class BookDataTest {
             tempFile.delete();
         }
         bookData = null;
+        BookData.setTestingFalse();
     }
 
     @Test
@@ -54,13 +56,13 @@ public class BookDataTest {
         ArrayList<Integer> quantities = new ArrayList<>();
         isbns.add(book.getIsbn13());
         quantities.add(5);
-
+        BuyOrders.setTestingTrue();
         BuyOrders buyOrder = new BuyOrders(isbns, quantities, 100.0, "Admin");
-        buyOrder.setTestingTrue();
+
         bookData.addBooksToStock(buyOrder);
 
         assertEquals(5, bookData.getBookQuantity(book.getIsbn13()));
-        buyOrder.setTestingFalse();
+        BuyOrders.setTestingFalse();
     }
 
     @Test

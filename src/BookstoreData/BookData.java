@@ -34,12 +34,14 @@ import javafx.stage.Stage;
 public class BookData implements Serializable {
 
     private static final long serialVersionUID = 1L;
+	private static boolean testing= false;
     ArrayList<Book> books;
     File file ;
 
     public BookData() {
         books = new ArrayList<Book>();
         file = new File("BookDataFile.dat");
+           if(!testing)
             readBookData();
         
     }
@@ -62,6 +64,8 @@ public class BookData implements Serializable {
         
         
     }
+	public static void setTestingTrue(){testing= true;}
+	public static void setTestingFalse(){testing= false;}
     public void newBookForm(Stage primaryStage, Worker temp) {
 		SettingStyles settingStyles = new SettingStyles();
         Stage stage = new Stage();

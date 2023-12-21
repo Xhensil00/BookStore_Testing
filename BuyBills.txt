@@ -1,8 +1,8 @@
 BuyBill
-Admin    : Thu Dec 21 18:58:37 CET 2023
-ISBN-> ISBN123
-	Quantity 5
+Admin    : Thu Dec 21 19:11:20 CET 2023
+ISBN-> 9780316029186
+	Quantity 1
 
 ---------------------------
-		Total Books: 5 
-		Total Price: 100.0 		
+		Total Books: 1 
+		Total Price: 1800.0 		
