@@ -232,6 +232,7 @@ public class BookData implements Serializable {
 			Book book = getBook(buyOreder.getIsbns().get(index));
 			book.addStock((int)buyOreder.getQuantity().get(index));
 		 }
+		 if(!testing)
 		 rewirteFile();
 		
 	   }
@@ -240,6 +241,7 @@ public class BookData implements Serializable {
 			Book book = getBook(sellOrder.getIsbns().get(index));
 			book.removeStock(sellOrder.getQuantity().get(index));
 		}
+		if(!testing)
 		rewirteFile();
 	}
 	public Book getBook(String isbn) {
