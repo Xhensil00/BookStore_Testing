@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 import Style.*;
 
 public class WorkerData implements Serializable {
-    private static final long SerialVersionUID = 19184098341049090l;
+    private static final long SerialVersionUID = 19184098341049090L;
     private static boolean testing;
     ArrayList <Worker>workerData;
     File file ;
@@ -45,7 +45,7 @@ public class WorkerData implements Serializable {
         
         try(ObjectInputStream reader = new ObjectInputStream(new FileInputStream(file))) {
 			Worker worker;
-			while(true) {
+            for(int i=0;i<10000;i++){
 				worker = (Worker)reader.readObject();
                 if (worker instanceof Librarian)
 				workerData.add((Librarian)worker);

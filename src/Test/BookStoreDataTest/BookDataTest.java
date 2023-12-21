@@ -23,7 +23,7 @@ public class BookDataTest {
     @BeforeEach
     public void setUp() throws IOException {
         tempFile = new File(tempFolder, "tempBookDataFile.dat");
-        tempFile.createNewFile();
+        boolean created= tempFile.createNewFile();
         BookData.setTestingTrue();
         bookData = new BookData();
         book = new Book("ISBN123", "Book Title", "Description", 20.0f, "Author", true, 0);
@@ -33,7 +33,7 @@ public class BookDataTest {
     @AfterEach
     public void tearDown() {
         if (tempFile.exists()) {
-            tempFile.delete();
+            boolean isDeleted=tempFile.delete();
         }
         bookData = null;
         BookData.setTestingFalse();

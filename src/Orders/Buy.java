@@ -1,7 +1,7 @@
 package Orders;
 
 public class Buy {
-    private static final long serialVersionUID = 529482940413L;
+
     private String name;
     private double totalPrice;
     private long time;

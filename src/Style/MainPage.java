@@ -104,7 +104,7 @@ public class MainPage{
         for (Book b : books.getBooks()) {
             if(Integer.parseInt(b.getStock()) < 5){
                 System.out.println(b.getStock());
-                names+= b.getTitle()+"\n";
+                names.concat(b.getTitle()+"\n") ;
                 a++;
             }
         }

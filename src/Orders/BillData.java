@@ -20,7 +20,7 @@ public class BillData {
         
         try(ObjectInputStream reader = new ObjectInputStream(new FileInputStream(purchasefile))) {
 			PurchaseOrders p;
-            while (true){
+            for(int i=0;i<10000;i++){
                 System.out.println("tits");
                 p=(PurchaseOrders)reader.readObject();
                 
@@ -39,7 +39,7 @@ public class BillData {
         
         try(ObjectInputStream reader = new ObjectInputStream(new FileInputStream(buyfile))) {
 			BuyOrders p;
-            while (true){
+            for(int i=0;i<10000;i++){
                 p=(BuyOrders)reader.readObject();
                 buys.add(p);
             }

@@ -1,10 +1,12 @@
 package BookstoreData;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Book implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 5296705482940410483L;
 	private transient SimpleStringProperty isbn13P, titleP, priceP,stockP ,genreP,authorP,paperBackP;
     private String isbn13;
@@ -15,7 +17,7 @@ public class Book implements Serializable {
     private String author;
     private String genre;
     private ArrayList<Genre> genres = new ArrayList<>();
-	private boolean paperback; // or e-book
+	private boolean Paperback; // or e-book
 	
 	public Book(String isbn13, String title, String description, float price, String author, boolean paperback,int stock) {
 		this.isbn13 = isbn13;
@@ -23,7 +25,7 @@ public class Book implements Serializable {
 		this.price = price;
 		this.author = author;
 		this.description = description;
-		this.paperback = paperback;
+		this.Paperback = paperback;
         this.stock = stock;
         for (Genre g: genres) {
             this.genre.concat(g.toString() + ", ");
@@ -109,7 +111,7 @@ public class Book implements Serializable {
 
 	public String getPaperBack() {
 		if(paperBackP == null) {
-			setPaperBack(paperback);
+			setPaperBack(Paperback);
 		}
 		return paperBackP.get();
 	}

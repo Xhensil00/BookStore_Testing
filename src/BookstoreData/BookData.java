@@ -1,13 +1,6 @@
 package BookstoreData;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import BookstoreData.Book.Genre;
 import Staff.Worker;
@@ -32,7 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class BookData implements Serializable {
-
+	@Serial
     private static final long serialVersionUID = 1L;
 	private static boolean testing= false;
     ArrayList<Book> books;
@@ -50,7 +43,7 @@ public class BookData implements Serializable {
         
         try(ObjectInputStream reader = new ObjectInputStream(new FileInputStream(file))) {
 			Book book;
-			while(true) {
+			for(int i=0;i<10000;i++) {
 				book = (Book)reader.readObject();
 				books.add(book);
 			}

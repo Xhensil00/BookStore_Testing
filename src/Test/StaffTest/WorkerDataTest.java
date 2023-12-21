@@ -23,7 +23,7 @@ public class WorkerDataTest {
     @BeforeEach
     public void setUp() throws IOException {
         tempFile = new File(tempDir, "tempWorkerDataFile.dat");
-        tempFile.createNewFile();
+        boolean created =tempFile.createNewFile();
         WorkerData.setTestingTrue();
         workerData = new WorkerData();
         workerData.setFile(tempFile);
@@ -34,7 +34,7 @@ public class WorkerDataTest {
 
     @AfterEach
     public void tearDown() {
-        tempFile.delete();
+        boolean isDeleted=tempFile.delete();
         workerData = null;
         WorkerData.setTestingFalse();
     }

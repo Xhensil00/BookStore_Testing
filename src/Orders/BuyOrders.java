@@ -1,11 +1,5 @@
 package Orders;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,6 +7,7 @@ import java.util.Date;
 import BookstoreData.HeaderlessObjectOutputStream;
 
 public class BuyOrders implements Serializable {
+    @Serial
     private static final long serialVersionUID = 529482940413L;
     private static boolean testing= false;
     transient private ArrayList<String >isbn13;
@@ -27,9 +22,8 @@ public class BuyOrders implements Serializable {
         this.quantity=quantity;
         this.totalPrice = totalPrice;
         this.name=name;
-        if (time==0) {
-           this.time=System.currentTimeMillis();
-         }
+        this.time=System.currentTimeMillis();
+
         if (!testing) {
            writeToFile();
            addToDatabase();
