@@ -26,7 +26,9 @@ public class BuyOrders implements Serializable {
         this.quantity=quantity;
         this.totalPrice = totalPrice;
         this.name=name;
-       if (time==0) this.time=System.currentTimeMillis();
+       if (time==0) {
+           this.time=System.currentTimeMillis();
+         }
         writeToFile();
         addToDatabase();
     }

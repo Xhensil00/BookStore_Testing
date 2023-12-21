@@ -192,8 +192,8 @@ public class BookData implements Serializable {
 			return true;
 		return false;
 	}
-    private boolean writeBookToFile(Book newBook) {
-		try {
+    public boolean writeBookToFile(Book newBook) {
+		try{
 			
 			FileOutputStream outputStream = new FileOutputStream(file, true);
 			ObjectOutputStream writer;
@@ -267,6 +267,14 @@ public class BookData implements Serializable {
     public ArrayList<Book> getBooks(){
             return this.books;
     }
+
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
+	}
 
 	public int getBookQuantity(String isbn) {
 		return getBook(isbn).getStockInt();
