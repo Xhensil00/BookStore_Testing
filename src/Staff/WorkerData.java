@@ -30,6 +30,7 @@ import Style.*;
 
 public class WorkerData implements Serializable {
     private static final long SerialVersionUID = 19184098341049090l;
+    private static boolean testing;
     ArrayList <Worker>workerData;
     File file ;
 
@@ -37,6 +38,7 @@ public class WorkerData implements Serializable {
      
      file= new File("workers.dat");
      workerData=new ArrayList<>();
+     if(!testing)
      readWorkerData();
     }
     public void readWorkerData() {
@@ -65,6 +67,12 @@ public class WorkerData implements Serializable {
     public void deleteWorker(Worker worker) {
         workerData.remove(worker);
         rewirteFile();
+    }
+    public static void setTestingTrue(){
+        testing= true;
+    }
+    public static void setTestingFalse(){
+        testing= false;
     }
     public boolean rewirteFile() {
 		try {
@@ -96,22 +104,6 @@ public class WorkerData implements Serializable {
 			return false;
 		}
 	}
-    public boolean writeAllData(){
-        File booksFile = new File("workers.dat");
-			try {
-                FileOutputStream outputStream = new FileOutputStream(booksFile);
-                ObjectOutputStream writer= new ObjectOutputStream(outputStream); 
-                for (Worker worker : workerData) {
-                    writer.writeObject(worker);
-                }
-                writer.close();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return true;
-    }
-
     public void newWorkerForm(Stage primarystage, Worker workertemp) {
         Stage stage= new Stage();
         SettingStyles settingStyles= new SettingStyles();
@@ -210,6 +202,7 @@ public class WorkerData implements Serializable {
            
           if (admin){
             Worker worker=new Admin(name,phone,email,salary,date,gender,password,ACCESSLEVEL.ADMIN);
+            if(!testing)
             writeWorkerToFile(worker);
             workerData.add(worker);
             stage.close();
@@ -217,12 +210,14 @@ public class WorkerData implements Serializable {
         }
         else if(manager){
             Worker worker=new Manager(name,phone,email,salary,date,gender,password,ACCESSLEVEL.MANAGER,permitionToPurchase,permitionToCheckLibrarians);
+            if(!testing)
             writeWorkerToFile(worker);
             workerData.add(worker);
             stage.close();
         }
         else if(librarian){
             Worker worker=new Librarian(name,phone,email,date,gender,salary,password,ACCESSLEVEL.LIBRARIAN,permitionToBill);
+            if(!testing)
             writeWorkerToFile(worker);
             workerData.add(worker);
             stage.close();
@@ -294,7 +289,7 @@ public class WorkerData implements Serializable {
                 workerData.remove(worker);
                 workerData.add(admin);
             }
-
+     if(!testing)
          rewirteFile();
  }
    

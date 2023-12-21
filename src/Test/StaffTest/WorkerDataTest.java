@@ -24,17 +24,19 @@ public class WorkerDataTest {
     public void setUp() throws IOException {
         tempFile = new File(tempDir, "tempWorkerDataFile.dat");
         tempFile.createNewFile();
-
+        WorkerData.setTestingTrue();
         workerData = new WorkerData();
-        librarian = new Librarian("John Doe", "123456789", "john@example.com", "1990-01-01", Gender.MALE, 50000, "password", Worker.ACCESSLEVEL.LIBRARIAN, true);
-        manager = new Manager("Alice Smith", "987654321", "alice@example.com", 60000, "1985-05-15", Gender.FEMALE, "password", Worker.ACCESSLEVEL.MANAGER, true, true);
-        admin = new Admin("Admin User", "111222333", "admin@example.com", 70000, "1978-12-25", Gender.MALE, "password", Worker.ACCESSLEVEL.ADMIN);
+        workerData.setFile(tempFile);
+        librarian = new Librarian("Efkaristo Poli", "123456789", "poli@example.com", "1990-01-01", Gender.MALE, 50000, "password", Worker.ACCESSLEVEL.LIBRARIAN, true);
+        manager = new Manager("Potukseris Imego", "987654321", "potu@example.com", 60000, "1985-05-15", Gender.FEMALE, "password", Worker.ACCESSLEVEL.MANAGER, true, true);
+        admin = new Admin("Puisere File", "111222333", "puis@example.com", 70000, "1978-12-25", Gender.MALE, "password", Worker.ACCESSLEVEL.ADMIN);
     }
 
     @AfterEach
     public void tearDown() {
         tempFile.delete();
         workerData = null;
+        WorkerData.setTestingFalse();
     }
 
     @Test
@@ -78,6 +80,7 @@ public class WorkerDataTest {
         workerData.writeWorkerToFile(librarian);
         workerData.writeWorkerToFile(manager);
         workerData.writeWorkerToFile(admin);
+        workerData.readWorkerData();
         assertEquals(1, workerData.getLibrarians().size());
     }
 
@@ -85,9 +88,10 @@ public class WorkerDataTest {
     public void testGetWorkerFromEmail() {
         workerData.setFile(tempFile);
         workerData.writeWorkerToFile(librarian);
-        Worker retrievedWorker = workerData.getWorkerFromEmail("john@example.com");
+        workerData.readWorkerData();
+        Worker retrievedWorker = workerData.getWorkerFromEmail(librarian.getEmail());
         assertNotNull(retrievedWorker);
-        assertEquals("John Doe", retrievedWorker.getFullName());
+        assertEquals("Efkaristo Poli", retrievedWorker.getFullName());
     }
 
     @Test
@@ -96,8 +100,9 @@ public class WorkerDataTest {
         workerData.writeWorkerToFile(librarian);
         workerData.writeWorkerToFile(manager);
         workerData.writeWorkerToFile(admin);
+        workerData.readWorkerData();
         Worker retrievedWorker = workerData.getWorker(1);
         assertNotNull(retrievedWorker);
-        assertEquals("Alice Smith", retrievedWorker.getFullName());
+        assertEquals("Potukseris Imego", retrievedWorker.getFullName());
     }
 }
