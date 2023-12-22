@@ -155,18 +155,6 @@ public class BookData implements Serializable {
 				// primaryStage.close();
 				stage.close();
 			}
-			// String isbn13 = isbnTF.getText();
-			// String title = titleTF.getText();
-			// float price = Float.parseFloat(priceTF.getText());
-			// String description = descriptionTA.getText();
-			// String author = authorTF.getText();
-			// boolean isPaperback = rbPaperback.isSelected();
-			// Book newBook = new Book(isbn13, title, description, price, author, isPaperback,0);
-			// for(int i=0; i < genreCheckboxes.size(); i++) {
-			// 	if(genreCheckboxes.get(i).isSelected())
-			// 		newBook.addGenre(Genre.values()[i]);
-					
-			// }
 		});
 		
 	
@@ -184,12 +172,10 @@ public class BookData implements Serializable {
 		stage.setTitle("Bookstore");
 		stage.show();
     }
-	private boolean checkIsbn13(String isbn13) {
-		if(isbn13.matches("[0-9]{13}"))
-			return true;
-		return false;
+	public boolean checkIsbn13(String isbn13) {
+		return isbn13.matches("[0-9]{13}");
 	}
-    public boolean writeBookToFile(Book newBook) {
+	public boolean writeBookToFile(Book newBook) {
 		try{
 			
 			FileOutputStream outputStream = new FileOutputStream(file, true);
@@ -244,15 +230,6 @@ public class BookData implements Serializable {
 		}
 		return null;
 	}
-
-
-    public ArrayList<Book> getFromName(String name){
-        ArrayList<Book> temp=new ArrayList<>();    
-        for (Book book : books) {
-                if (book.getTitle().contains(name))temp.add(book);
-            }
-            return temp;
-    }
 
 	public Book searchByTitle(String title){
 		for( Book b: books){

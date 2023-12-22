@@ -3,6 +3,7 @@ package Test.BookStoreDataTest;
 import BookstoreData.Book;
 import BookstoreData.BookData;
 import Orders.BuyOrders;
+import Orders.PurchaseOrders;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.io.TempDir;
 import java.io.*;
@@ -23,11 +24,12 @@ public class BookDataTest {
     @BeforeEach
     public void setUp() throws IOException {
         tempFile = new File(tempFolder, "tempBookDataFile.dat");
-        boolean created= tempFile.createNewFile();
         BookData.setTestingTrue();
+        boolean created= tempFile.createNewFile();
         bookData = new BookData();
         book = new Book("ISBN123", "Book Title", "Description", 20.0f, "Author", true, 0);
         bookData.getBooks().add(book);
+
     }
 
     @AfterEach
@@ -35,8 +37,8 @@ public class BookDataTest {
         if (tempFile.exists()) {
             boolean isDeleted=tempFile.delete();
         }
-        bookData = null;
         BookData.setTestingFalse();
+        bookData = null;
     }
 
     @Test
@@ -64,6 +66,23 @@ public class BookDataTest {
         assertEquals(5, bookData.getBookQuantity(book.getIsbn13()));
         BuyOrders.setTestingFalse();
     }
+    @Test
+    public void testRemoveBooksFromStock() throws IOException {
+        bookData.setFile(tempFile);
+        book.addStock(5);
+        bookData.writeBookToFile(book);
+        ArrayList<String> isbns = new ArrayList<>();
+        ArrayList<Integer> quantities = new ArrayList<>();
+        isbns.add(book.getIsbn13());
+        quantities.add(5);
+        PurchaseOrders.setTestingTrue();
+        PurchaseOrders purchaseOrders = new PurchaseOrders(isbns, quantities, 100.0, "Admin");
+
+        bookData.removeBooksFromStock(purchaseOrders);
+
+        assertEquals(0, bookData.getBookQuantity(book.getIsbn13()));
+        PurchaseOrders.setTestingFalse();
+    }
 
     @Test
     public void testReadBookData() throws IOException {
@@ -88,5 +107,22 @@ public class BookDataTest {
         boolean result = bookData.writeBookToFile(book);
         assertTrue(result);
         assertTrue(tempFile.exists());
+    }
+    @Test
+    public void testValidIsbn13() {
+        assertTrue(bookData.checkIsbn13("1234567890123"));
+    }
+
+    @Test
+    public void testInvalidIsbn13() {
+        assertFalse(bookData.checkIsbn13("invalidisbn"));
+    }
+
+    @Test
+    public void testEmptyIsbn13() { assertFalse(bookData.checkIsbn13(""));}
+    @Test
+    public void testGetBookQuantity() {
+        book.addStock(10);
+        assertEquals(10,bookData.getBookQuantity(book.getIsbn13()));
     }
 }

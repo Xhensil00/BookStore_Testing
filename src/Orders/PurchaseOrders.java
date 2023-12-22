@@ -11,6 +11,7 @@ import BookstoreData.HeaderlessObjectOutputStream;
 public class PurchaseOrders implements Serializable{
     @Serial
     private static final long serialVersionUID = 529482940413L;
+    private static boolean testing= false;
     private transient ArrayList<String >isbn13;
     private transient ArrayList<Integer>quantity;
     private double totalPrice;
@@ -33,9 +34,6 @@ public class PurchaseOrders implements Serializable{
     public String getName(){
         return this.name;
     }
-    private long getTime(){
-        return this.time;
-    }
     public ArrayList<String> getIsbns(){
         return isbn13;
     }
@@ -43,6 +41,8 @@ public class PurchaseOrders implements Serializable{
     public ArrayList<Integer> getQuantity(){
         return quantity;
     }
+    public static void setTestingTrue(){testing= true;}
+    public static void setTestingFalse(){testing= false;}
 
     private boolean addToDatabase() {
 		try {
