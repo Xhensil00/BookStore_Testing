@@ -30,6 +30,12 @@ public class PurchaseOrders implements Serializable{
         addToDatabase();
         }
     }
+    public void setTxtFile(File file){
+        this.file=file;
+    }
+    public void setDataFile(File file){
+        this.purchasefile=file;
+    }
     public double getTotalPrice(){
         return this.totalPrice;
     }
@@ -46,7 +52,7 @@ public class PurchaseOrders implements Serializable{
     public static void setTestingTrue(){testing= true;}
     public static void setTestingFalse(){testing= false;}
 
-    private boolean addToDatabase() {
+    public boolean addToDatabase() {
 		try {
 			
 			FileOutputStream outputStream = new FileOutputStream(purchasefile, true);

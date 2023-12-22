@@ -1,8 +1,8 @@
 BuyBill
-Admin    : Thu Dec 21 19:11:20 CET 2023
-ISBN-> 9780316029186
-	Quantity 1
+Sokoli Vogel    : Fri Dec 22 18:46:32 CET 2023
+ISBN-> 1234567890123
+	Quantity 3
 
 ---------------------------
-		Total Books: 1 
-		Total Price: 1800.0 		
+		Total Books: 3 
+		Total Price: 45.67 		

@@ -1,5 +1,6 @@
 package Orders;
 
+import javax.swing.*;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,12 +10,15 @@ import java.util.ArrayList;
 
 public class BillData {
     ArrayList<BuyOrders> buys=new ArrayList<>();
+    private static boolean testing= false;
     ArrayList<PurchaseOrders> purchases=new ArrayList<>();
     File purchasefile=new File("PurchaseBillData.dat");
     File buyfile=new File("BuysBillData.dat");
     public BillData (){
-        readPurchaseBillsData();
-        readBuyBillsData();
+       if(!testing){
+           readPurchaseBillsData();
+           readBuyBillsData();
+       }
     }
     public void readPurchaseBillsData()  {
         
@@ -34,6 +38,12 @@ public class BillData {
 			System.out.println("Error reading from bill file");
 		}
     }
+    public ArrayList<PurchaseOrders> getPurchases(){
+        return this.purchases;
+    }
+    public ArrayList<PurchaseOrders> getBuys(){
+        return this.purchases;
+    }
 
     public void readBuyBillsData()  {
         
@@ -51,34 +61,12 @@ public class BillData {
 			System.out.println("Error reading from bill file");
 		}
     }
-    public ArrayList<PurchaseOrders> getPurchasedBillsFromName(String name){
-        ArrayList<PurchaseOrders> rez= new ArrayList<>();
-        for (PurchaseOrders temp : purchases) {
-            if (temp.getName().equals(name))rez.add(temp);
-        }
-        return rez;
+    public static void setTestingTrue(){testing= true;}
+    public static void setTestingFalse(){testing= false;}
+    public void setBuysFile(File file){
+        this.buyfile=file;
     }
-    public double getTotalSalesFromName(String name){
-        double total=0;
-        for (PurchaseOrders temp : getPurchasedBillsFromName(name)) {
-            total+=temp.getTotalPrice();
-        }
-        return total;
+    public void setPurchasesFile(File file){
+        this.purchasefile=file;
     }
-    public ArrayList<BuyOrders> getBuyBillsFromName(String name){
-        ArrayList<BuyOrders> rez= new ArrayList<>();
-        for (BuyOrders temp : buys) {
-            if (temp.getName().equals(name))rez.add(temp);
-        }
-        return rez;
-    }
-    public double getTotalBuysFromName(String name){
-        double total=0;
-        for (BuyOrders temp : getBuyBillsFromName(name)) {
-            total+=temp.getTotalPrice();
-        }
-        return total;
-    }
-
-    
 }

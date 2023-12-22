@@ -29,6 +29,12 @@ public class BuyOrders implements Serializable {
            addToDatabase();
         }
     }
+    public void setTxtFile(File file){
+        this.file=file;
+    }
+    public void setDataFile(File file){
+        this.filedata=file;
+    }
     public double getTotalPrice(){
         return this.totalPrice;
     }
@@ -47,7 +53,7 @@ public class BuyOrders implements Serializable {
     }
     public static void setTestingTrue(){testing=true;}
     public static void setTestingFalse(){testing=false;}
-    private boolean addToDatabase() {
+    public boolean addToDatabase() {
 		try {
 			
 			FileOutputStream outputStream = new FileOutputStream(filedata,true);
@@ -56,7 +62,7 @@ public class BuyOrders implements Serializable {
 				writer = new HeaderlessObjectOutputStream(outputStream);
 			else
 				writer = new ObjectOutputStream(outputStream); 
-			writer.writeObject(new Buy(name, totalPrice, time));
+			writer.writeObject(this);
 			writer.close();
 			return true;
 		} catch(IOException ex) {
