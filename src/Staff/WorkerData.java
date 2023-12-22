@@ -38,8 +38,9 @@ public class WorkerData implements Serializable {
      
      file= new File("workers.dat");
      workerData=new ArrayList<>();
-     if(!testing)
-     readWorkerData();
+     if(!testing) {
+         readWorkerData();
+     }
     }
     public void readWorkerData() {
         
@@ -48,11 +49,11 @@ public class WorkerData implements Serializable {
             for(int i=0;i<10000;i++){
 				worker = (Worker)reader.readObject();
                 if (worker instanceof Librarian)
-				workerData.add((Librarian)worker);
+				    workerData.add((Librarian)worker);
                 if (worker instanceof Manager)
-				workerData.add((Manager)worker);
+				    workerData.add((Manager)worker);
                 if (worker instanceof Admin)
-				workerData.add((Admin)worker);
+                    workerData.add((Admin)worker);
 			}
 		} catch (EOFException e) {
 			System.out.println("Read all the books from the file");
@@ -202,23 +203,27 @@ public class WorkerData implements Serializable {
            
           if (admin){
             Worker worker=new Admin(name,phone,email,salary,date,gender,password,ACCESSLEVEL.ADMIN);
-            if(!testing)
-            writeWorkerToFile(worker);
+            if(!testing){
+                writeWorkerToFile(worker);
+            }
+
             workerData.add(worker);
             stage.close();
            
         }
         else if(manager){
             Worker worker=new Manager(name,phone,email,salary,date,gender,password,ACCESSLEVEL.MANAGER,permitionToPurchase,permitionToCheckLibrarians);
-            if(!testing)
-            writeWorkerToFile(worker);
+            if(!testing){
+                writeWorkerToFile(worker);
+            }
             workerData.add(worker);
             stage.close();
         }
         else if(librarian){
             Worker worker=new Librarian(name,phone,email,date,gender,salary,password,ACCESSLEVEL.LIBRARIAN,permitionToBill);
-            if(!testing)
-            writeWorkerToFile(worker);
+            if(!testing){
+                writeWorkerToFile(worker);
+            }
             workerData.add(worker);
             stage.close();
         }

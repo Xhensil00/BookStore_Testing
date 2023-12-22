@@ -104,7 +104,7 @@ public class MainPage{
         for (Book b : books.getBooks()) {
             if(Integer.parseInt(b.getStock()) < 5){
                 System.out.println(b.getStock());
-                names.concat(b.getTitle()+"\n") ;
+                String temp=names.concat(b.getTitle()+"\n") ;
                 a++;
             }
         }
@@ -272,12 +272,8 @@ public class MainPage{
                     System.out.println("hyri");
                     Book book = books.searchByTitle(content);
                     System.out.println("U gjet libri" + book.getTitle());
-                    if(book != null){
-                        BookInfoHolder.getChildren().add(getPurchaseBookPane(book));
-                    }
-                }else if(choice.equals("Author")){
 
-                }else{
+                        BookInfoHolder.getChildren().add(getPurchaseBookPane(book));
 
                 }
 
@@ -403,14 +399,12 @@ public class MainPage{
         purchaseBookBtnHolder.setStyle(styles.getBtnPane());
         purchaseBookBtn = new Button("Purchase Books");
         if(worker instanceof Librarian){
-            worker = (Librarian) worker;
             boolean hasAccess = ((Librarian) worker).isPermitionToBill();
             if(!hasAccess){
                 purchaseBookBtn.setDisable(true);
             }
         }
         if(worker instanceof Manager){
-            worker = (Manager) worker;
             boolean hasAccess = ((Manager) worker).isPermitionToPurchse();
             if(!hasAccess){
                 addBookToStockBtn.setDisable(true);
@@ -557,7 +551,7 @@ public class MainPage{
                 else if(newAccessLevel.getValue().equals(ACCESSLEVEL.LIBRARIAN)){
                     grid.getChildren().removeAll(newPremitionToCheckLib, newPermitionToPurchaseCheckBox);
                     grid.add(newPremitionToBill, 0, 6);
-                   if (tempworker instanceof Librarian) newPremitionToBill.setSelected(((Librarian) tempworker).isPermitionToBill());
+                   if (tempworker instanceof Librarian) {newPremitionToBill.setSelected(((Librarian) tempworker).isPermitionToBill());}
                     System.out.println(newPremitionToBill.isSelected());
                 }
             }
@@ -651,8 +645,9 @@ public class MainPage{
         grid.add(workerSalary, 0, 3);
         grid.add(workerPhoneNumber, 0, 4);
         grid.add(totalSales, 0, 5);
-        if(tempworker instanceof Manager||tempworker instanceof Admin)
-        grid.add(totalBuys,0,7);
+        if(tempworker instanceof Manager||tempworker instanceof Admin){
+            grid.add(totalBuys,0,7);
+        }
         grid.add(deletWorkerBtn, 0, 8);
         grid.add(editWorkerBtn, 1, 8);
         

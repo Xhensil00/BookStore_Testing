@@ -25,8 +25,10 @@ public class PurchaseOrders implements Serializable{
         this.totalPrice = totalPrice;
         this.name=name;
         this.time=System.currentTimeMillis();
+        if(!testing){
         writeToFile();
         addToDatabase();
+        }
     }
     public double getTotalPrice(){
         return this.totalPrice;

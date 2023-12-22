@@ -125,4 +125,8 @@ public class BookDataTest {
         book.addStock(10);
         assertEquals(10,bookData.getBookQuantity(book.getIsbn13()));
     }
+    @Test
+    public void testSearchByTittle() {
+        assertEquals(book, bookData.searchByTitle(book.getTitle()));
+    }
 }
