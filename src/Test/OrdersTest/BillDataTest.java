@@ -50,4 +50,15 @@ public class BillDataTest {
         bill.readBuyBillsData();
         assertNotNull(bill.getBuys());
     }
+    @AfterEach
+    public void tearDown(){
+        BillData.setTestingFalse();
+        if (purchaseFile.exists()) {
+            boolean isDeleted=purchaseFile.delete();
+        }
+        if (buysFile.exists()) {
+            boolean isDeleted=buysFile.delete();
+        }
+        bill= null;
+    }
 }
