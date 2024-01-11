@@ -56,8 +56,9 @@ public class LoginPage{
         LogInBtn.setStyle(styles.getLoginBtnStyle());
         root.setBottom(bottom);
 
-    
+
         GridPane center = new GridPane();
+        center.setId("center");  // Set the ID here
         center.setAlignment(Pos.CENTER);
         Label EmailLabel = new Label("Email");
         EmailLabel.setStyle(styles.getLoginLabelStyle());

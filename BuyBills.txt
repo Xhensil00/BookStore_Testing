@@ -1,5 +1,5 @@
 BuyBill
-Sokoli Vogel    : Wed Jan 10 18:04:57 CET 2024
+Sokoli Vogel    : Thu Jan 11 20:19:30 CET 2024
 ISBN-> 1234567890123
 	Quantity 3
 
