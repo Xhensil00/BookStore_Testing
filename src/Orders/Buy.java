@@ -5,7 +5,7 @@ public class Buy {
     private String name;
     private double totalPrice;
     private long time;
-    Buy(String name,double totalPrice,long time){
+    public Buy(String name, double totalPrice, long time){
         this.name=name;
         this.totalPrice=totalPrice;
         this.time=time;

@@ -6,7 +6,7 @@ public class Purchase implements Serializable{
     private String name;
     private double totalPrice;
     private long time;
-    Purchase(String name,double totalPrice,long time){
+    public Purchase(String name, double totalPrice, long time){
         this.name=name;
         this.totalPrice=totalPrice;
         this.time=time;
