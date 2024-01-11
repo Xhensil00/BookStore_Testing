@@ -1,7 +1,5 @@
 package StyleControllers;
 
-import java.net.SocketTimeoutException;
-
 import Staff.*;
 import Style.MainPage;
 import Style.SettingStyles;
