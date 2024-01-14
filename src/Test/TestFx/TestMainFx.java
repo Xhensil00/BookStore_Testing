@@ -44,7 +44,6 @@ public class TestMainFx extends ApplicationTest {
     }
     @BeforeAll
     static void startUp(){
-
     }
     @BeforeEach
     void setUp(){
@@ -143,5 +142,6 @@ public class TestMainFx extends ApplicationTest {
     void test_Login_LogOut(){
         Button logOut= lookup("#LogOutBtn").queryButton();
         clickOn(logOut);
+        assertFalse(lookup("LogOutBtn").tryQuery().isPresent());
     }
 }
