@@ -70,22 +70,26 @@ public class BookData implements Serializable {
 		pane.setStyle(settingStyles.getLoginRootStyle());
 		
 		TextField titleTF = new TextField();
+		titleTF.setId("titleTF");
 		titleTF.setStyle(settingStyles.getLoginTextFieldStyle());
 		titleTF.setPromptText("Title");
 		Label titleLbl = new Label("Title");
 		
 		TextField isbnTF = new TextField();
+		isbnTF.setId("isbnTF");
 		isbnTF.setStyle(settingStyles.getLoginTextFieldStyle());
 		isbnTF.setPromptText("ISBN 13");
 		Label isbnLbl = new Label("ISBN 13");
 		
 		TextField priceTF = new TextField();
+		priceTF.setId("priceTF");
 		priceTF.setStyle(settingStyles.getLoginTextFieldStyle());
 		priceTF.setPromptText("Price");
 		Label priceLbl = new Label("Price");
 		
 		Label versionLbl = new Label("Version");
 		RadioButton rbPaperback = new RadioButton("Paperback");
+		rbPaperback.setId("rbPaperback");
 		rbPaperback.setStyle(settingStyles.getRadioBtn());
 		RadioButton rbEbook = new RadioButton("E-book");
 		rbEbook.setStyle(settingStyles.getRadioBtn());
@@ -97,6 +101,7 @@ public class BookData implements Serializable {
 		
 		Label descriptionLbl = new Label("Description");
 		TextArea descriptionTA = new TextArea();
+		descriptionTA.setId("descriptionTA");
 		descriptionTA.setStyle("-fx-background-color: #0E273C; -fx-text-fill: #0E273C; -fx-font-size: 14px; -fx-font-family: 'Segoe UI'; -fx-font-weight: bold; -fx-border-color: #35CE8D; -fx-border-width: 3px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-padding: 5px;");
 		descriptionTA.setPrefColumnCount(20);
 		descriptionTA.setPrefRowCount(5);
@@ -105,6 +110,7 @@ public class BookData implements Serializable {
 		
 		Label authosLbl = new Label("Select an author: ");
 		TextField authorTF = new TextField();
+		authorTF.setId("authorTF");
 		authorTF.setStyle(settingStyles.getLoginTextFieldStyle());
 		authorTF.setPromptText("Author");
 		// genres
@@ -114,10 +120,12 @@ public class BookData implements Serializable {
 		for(Genre g : Genre.values()) {
 			genreCheckboxes.add(new CheckBox(g.toString()));
 		}
+		genreCheckboxes.get(0).setId("CheckBoxes");
 		paneForGenres.getChildren().addAll(genreCheckboxes);
 		Label genreLbl = new Label("Genres: ");
 		
 		Button submitBtn = new Button("Submit");
+		submitBtn.setId("SubmitBtn");
 		submitBtn.setStyle(settingStyles.getLogOutBtnStyle());
 
 		submitBtn.setOnAction(e -> {

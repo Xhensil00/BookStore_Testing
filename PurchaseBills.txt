@@ -1,8 +1,8 @@
 PurchaseBill
-Sokoli Vogel    : Fri Jan 12 20:36:21 CET 2024
-ISBN-> 1234567890123
-	Quantity 3
+Admin    : Sun Jan 14 20:00:51 CET 2024
+ISBN-> 9780547928227
+	Quantity 20
 
 ---------------------------
-		Total Books: 3 
-		Total Price: 45.67 		
+		Total Books: 20 
+		Total Price: 40000.0 		

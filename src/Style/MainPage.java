@@ -108,7 +108,7 @@ public class MainPage{
                 a++;
             }
         }
-    if(a!=0) {
+    if(false) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Low Stock");
         alert.setHeaderText("Low Stock");
@@ -121,6 +121,13 @@ public class MainPage{
             // TODO Auto-generated catch block
             System.out.println("File not found");
         }
+
+        addBookBtn.setId("addBookBtn");
+        purchaseBookBtn.setId("purchaseBookBtn");
+        addBookToStockBtn.setId("addBookToStockBtn");
+        bookTableView.setId("bookTable");
+        workerTableView.setId("workerTable");
+        BookInfoHolder.setId("BookInfoHolder");
     }
 
     private void createMainPage() throws FileNotFoundException {
@@ -279,7 +286,7 @@ public class MainPage{
 
             }
         });
-
+        LogOutBtn.setId("LogOutBtn");
         LogOutBtn.setOnAction(e -> MainController.LogOut(primaryStage));
 
         addWorkerBtn.setOnAction(e-> MainController.addWorker(workers, primaryStage , worker));
@@ -445,6 +452,7 @@ public class MainPage{
         Label bookPrice = new Label("" + book.getPrice());
         bookPrice.setStyle(styles.getSalesLabel());
         TextField nrBooks = new TextField();
+        nrBooks.setId("nrBooks");
         nrBooks.setPrefHeight(20);
         nrBooks.setPrefWidth(50);
 
