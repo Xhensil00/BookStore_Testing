@@ -43,12 +43,14 @@ public class LoginController{
         }
             else {
                 wrongPassword = new Label("Wrong Password");
+                wrongPassword.setId("WrongPasswordLabel");
                 wrongPassword.setStyle("-fx-text-fill: red; -fx-font-size: 20px;");
                 center.add(wrongPassword, 0, 4);
             }
 
         }else{
             wrongEmail = new Label("Email Doesn't Exist");
+            wrongEmail.setId("WrongEmailLabel");
             wrongEmail.setStyle("-fx-text-fill: red; -fx-font-size: 20px;");
             center.add(wrongEmail, 0, 4);
         }

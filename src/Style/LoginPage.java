@@ -76,6 +76,10 @@ public class LoginPage{
         PasswordTextField.setStyle(styles.getLoginTextFieldStyle());
         root.setCenter(center);
 
+        LogInBtn.setId("LogInBtn");
+        EmailTextField.setId("EmailTextField");
+        PasswordTextField.setId("PasswordTextField");
+
         LogInBtn.setOnAction(e -> LoginController.login(EmailTextField.getText(), PasswordTextField.getText(), primaryStage, center));
     }
 
