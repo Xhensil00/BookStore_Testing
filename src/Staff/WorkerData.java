@@ -110,29 +110,35 @@ public class WorkerData implements Serializable {
         SettingStyles settingStyles= new SettingStyles();
         
         TextField nameText=new TextField();
+        nameText.setId("nameTF");
         nameText.setPromptText("name");
         nameText.setStyle(settingStyles.getLoginTextFieldStyle());
 
         TextField emailText=new TextField();
+        emailText.setId("emailTF");
         emailText.setPromptText("email");
         emailText.setStyle(settingStyles.getLoginTextFieldStyle());
 
         TextField phoneText=new TextField();
+        phoneText.setId("phoneTF");
         phoneText.setPromptText("phone number");
         phoneText.setStyle(settingStyles.getLoginTextFieldStyle());
        
         TextField salaryText=new TextField();
+        salaryText.setId("salaryTF");
         salaryText.setPromptText("salary");
         salaryText.setStyle(settingStyles.getLoginTextFieldStyle());
 
         //Text Field for Phone
         PasswordField passwordText=new PasswordField();
+        passwordText.setId("passwordTF");
         passwordText.setPromptText("password");
         passwordText.setStyle(settingStyles.getLoginTextFieldStyle()); 
 
 
         //date picker to choose date
         DatePicker datePicker=new DatePicker();
+        datePicker.setId("datePicker");
         datePicker.setPromptText("Date of birth");
         datePicker.setStyle(settingStyles.getDatePicker());
         datePicker.setPrefWidth(270);
@@ -140,6 +146,7 @@ public class WorkerData implements Serializable {
         //Toggle group of radio button
         ToggleGroup groupGender=new ToggleGroup();
         RadioButton maleRadio=new RadioButton("male");
+        maleRadio.setId("maleRadio");
         maleRadio.setStyle(settingStyles.getRadioBtn());
         maleRadio.setToggleGroup(groupGender);
         RadioButton femaleRadio=new RadioButton("female");
@@ -159,6 +166,7 @@ public class WorkerData implements Serializable {
         GridPane gridPane=new GridPane();
         //Choice box for location
         ChoiceBox locationChoiceBox=new ChoiceBox();
+        locationChoiceBox.setId("locationChoiceBox");
         locationChoiceBox.getItems().addAll("Librarian","Manager","Administrator");
         //locationChoiceBox.setValue("Librarian");
         locationChoiceBox.setStyle(settingStyles.getSearchListStyle());
@@ -182,7 +190,7 @@ public class WorkerData implements Serializable {
 
         //Label for register
         Button buttonRegister=new Button("Register");
-        
+        buttonRegister.setId("SubmitBtn");
        buttonRegister.setOnMouseClicked(event ->{
             String name=nameText.getText();
             String email=emailText.getText();

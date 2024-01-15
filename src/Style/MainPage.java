@@ -191,6 +191,7 @@ public class MainPage{
         // center.setPadding(new javafx.geometry.Insets(0, 0, 10, 0));
         TabPane tabPane = new TabPane();
 
+        tabPane.setId("tabPane");
         Tab BookTab = new Tab("Books");
         BookTab.setStyle(styles.getBookTableStyle());
         BookTab.setClosable(false);
@@ -245,6 +246,7 @@ public class MainPage{
         workerBottomPane.setStyle(styles.getBtnPane());
 
         addWorkerBtn = new Button("Add Worker");
+        addWorkerBtn.setId("addWorkerBtn");
 
         if(!worker.getACCESSLEVEL().toString().equals("ADMIN")){
                     addWorkerBtn.setDisable(true);
@@ -580,6 +582,7 @@ public class MainPage{
         
 
         Button deletWorkerBtn = new Button("Delete Worker");
+        deletWorkerBtn.setId("deletWorkerBtn");
         deletWorkerBtn.setStyle(styles.getLogOutBtnStyle());
         if(!(worker.getACCESSLEVEL().toString().equals("ADMIN"))){
             deletWorkerBtn.setDisable(true);
