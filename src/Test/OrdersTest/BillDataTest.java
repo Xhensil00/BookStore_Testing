@@ -50,6 +50,31 @@ public class BillDataTest {
         bill.readBuyBillsData();
         assertNotNull(bill.getBuys());
     }
+    @Test
+    public void testSetTestingTrue() {
+        // Test setting testing to true
+        BillData.setTestingTrue();
+        assertTrue(BillData.isTesting()); // Assuming you have a static getter method for testing
+    }
+
+    @Test
+    public void testSetTestingFalse() {
+        // Test setting testing to false
+        BillData.setTestingFalse();
+        assertFalse(BillData.isTesting()); // Assuming you have a static getter method for testing
+    }
+    @Test
+    public void testSetPurchasesFile(){
+        File file= new File("test.dat");
+        bill.setPurchasesFile(file);
+        assertEquals(file, bill.getPurchasesFile());
+    }
+    @Test
+    public void testSetBuysFile(){
+        File file= new File("test.dat");
+        bill.setBuysFile(file);
+        assertEquals(file, bill.getBuysFile());
+    }
     @AfterEach
     public void tearDown(){
         BillData.setTestingFalse();

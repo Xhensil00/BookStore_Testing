@@ -45,7 +45,46 @@ public class PurchaseOrderTest {
     public void testGetTotalPrice() {
         assertEquals(45.67, purchaseOrder.getTotalPrice(), 0.001);
     }
-
+    @Test
+    public void testGetDataFile() {
+        assertEquals(tempFile2, purchaseOrder.getDataFile());
+    }
+    @Test
+    public void testSetDataFile() {
+        purchaseOrder.setDataFile(tempFile2);
+        assertEquals(tempFile2, purchaseOrder.getDataFile());
+    }
+    @Test
+    public void testGetTxtFile() {
+        assertEquals(tempFile1, purchaseOrder.getTxtFile());
+    }
+    @Test
+    public void testSetTxtFile() {
+        purchaseOrder.setTxtFile(tempFile1);
+        assertEquals(tempFile1, purchaseOrder.getTxtFile());
+    }
+    @Test
+    public void testGetIsbn13() {
+        assertEquals(1, purchaseOrder.getIsbns().size());
+        assertEquals("1234567890123", purchaseOrder.getIsbns().get(0));
+    }
+    @Test
+    public void testSetTestingTrue() {
+        PurchaseOrders.setTestingTrue();
+        assertTrue(PurchaseOrders.getTesting());
+    }
+    @Test
+    public void testSetTestingFalse() {
+        PurchaseOrders.setTestingFalse();
+        assertFalse(PurchaseOrders.getTesting());
+    }
+    @Test
+    public void testGetTesting() {
+        PurchaseOrders.setTestingTrue();
+        assertTrue(PurchaseOrders.getTesting());
+        PurchaseOrders.setTestingFalse();
+        assertFalse(PurchaseOrders.getTesting());
+    }
     @Test
     public void testGetName() {
         assertEquals("Sokoli Vogel", purchaseOrder.getName());

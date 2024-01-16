@@ -46,7 +46,44 @@ public class BuyOrdersTest {
     public void testGetTotalPrice() {
         assertEquals(45.67, buyOrder.getTotalPrice(), 0.001);
     }
-
+    @Test
+    public void testSetTxtFile() {
+        buyOrder.setTxtFile(tempFile1);
+        assertEquals(tempFile1, buyOrder.getTxtFile());
+    }
+    @Test
+    public void testSetDataFile() {
+        buyOrder.setDataFile(tempFile2);
+        assertEquals(tempFile2, buyOrder.getDataFile());
+    }
+    @Test
+    public void testGetTxtFile() {
+        assertEquals(tempFile1, buyOrder.getTxtFile());
+    }
+    @Test
+    public void testGetDataFile() {
+        assertEquals(tempFile2, buyOrder.getDataFile());
+    }
+    @Test
+    public  void testSetTestingTrue() {
+        BuyOrders.setTestingTrue();
+        assertTrue(BuyOrders.getTesting());
+    }
+    @Test
+    public  void testSetTestingFalse() {
+        BuyOrders.setTestingFalse();
+        assertFalse(BuyOrders.getTesting());
+    }
+    @Test
+    public void testGetTesting() {
+        BuyOrders.setTestingFalse();
+        assertFalse(BuyOrders.getTesting());
+    }
+    @Test
+    public void testGetIsbn13() {
+        assertEquals(1, buyOrder.getIsbns().size());
+        assertEquals("1234567890123", buyOrder.getIsbns().get(0));
+    }
     @Test
     public void testGetName() {
         assertEquals("Sokoli Vogel", buyOrder.getName());

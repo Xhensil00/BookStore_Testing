@@ -104,4 +104,39 @@ public class WorkerDataTest {
         assertNotNull(retrievedWorker);
         assertEquals("Potukseris Imego", retrievedWorker.getFullName());
     }
+    @Test
+    public void testGetWorkerFromEmailNull() {
+        workerData.setFile(tempFile);
+        workerData.writeWorkerToFile(librarian);
+        workerData.readWorkerData();
+        Worker retrievedWorker = workerData.getWorkerFromEmail(null);
+        assertNull(retrievedWorker);
+    }
+    @Test
+    public void testGetWorkerFromEmailEmpty() {
+        workerData.setFile(tempFile);
+        workerData.writeWorkerToFile(librarian);
+        workerData.readWorkerData();
+        Worker retrievedWorker = workerData.getWorkerFromEmail("");
+        assertNull(retrievedWorker);
+    }
+    @Test
+    public void testGetWorkerEmpty() {
+        workerData.setFile(tempFile);
+        workerData.writeWorkerToFile(librarian);
+        workerData.writeWorkerToFile(manager);
+        workerData.writeWorkerToFile(admin);
+        workerData.readWorkerData();
+        Worker retrievedWorker = workerData.getWorkerFromEmail("");
+        assertNull(retrievedWorker);
+    }
+    @Test
+    public void testGetWorkerFromEmailWrong() {
+        workerData.setFile(tempFile);
+        workerData.writeWorkerToFile(librarian);
+        workerData.readWorkerData();
+        Worker retrievedWorker = workerData.getWorkerFromEmail("abc");
+        assertNull(retrievedWorker);
+    }
+
 }

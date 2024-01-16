@@ -32,8 +32,14 @@ public class BuyOrders implements Serializable {
     public void setTxtFile(File file){
         this.file=file;
     }
+    public File getTxtFile(){
+        return this.file;
+    }
     public void setDataFile(File file){
         this.filedata=file;
+    }
+    public File getDataFile(){
+        return this.filedata;
     }
     public double getTotalPrice(){
         return this.totalPrice;
@@ -41,10 +47,6 @@ public class BuyOrders implements Serializable {
     public String getName(){
         return this.name;
     }
-    private long getTime(){
-        return this.time;
-    }
-        
     public ArrayList<String> getIsbns(){
         return isbn13;
     }
@@ -53,6 +55,7 @@ public class BuyOrders implements Serializable {
     }
     public static void setTestingTrue(){testing=true;}
     public static void setTestingFalse(){testing=false;}
+    public static boolean getTesting(){return testing;}
     public boolean addToDatabase() {
 		try {
 			

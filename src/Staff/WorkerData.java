@@ -190,7 +190,7 @@ public class WorkerData implements Serializable {
 
         //Label for register
         Button buttonRegister=new Button("Register");
-        buttonRegister.setId("SubmitBtn");
+        buttonRegister.setId("RegisterBtn");
        buttonRegister.setOnMouseClicked(event ->{
             String name=nameText.getText();
             String email=emailText.getText();
@@ -286,7 +286,7 @@ public class WorkerData implements Serializable {
         stage.show();
 
  }
- public void editWorker(Worker worker,String name,String Email,ACCESSLEVEL accesslevel,float d, String phone,boolean permitionToCheckLibrarians ,boolean permitionToPurchase,boolean permitionToBill){
+    public void editWorker(Worker worker,String name,String Email,ACCESSLEVEL accesslevel,float d, String phone,boolean permitionToCheckLibrarians ,boolean permitionToPurchase,boolean permitionToBill){
          if(accesslevel.equals(ACCESSLEVEL.LIBRARIAN)){
                 Librarian librarian=new Librarian(name, phone, Email, worker.getDateOfBirth(), worker.getGender(), d, worker.getPassword(), ACCESSLEVEL.LIBRARIAN, permitionToBill);
                 workerData.remove(worker);

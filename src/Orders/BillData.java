@@ -63,10 +63,17 @@ public class BillData {
     }
     public static void setTestingTrue(){testing= true;}
     public static void setTestingFalse(){testing= false;}
+    public static boolean isTesting(){return testing;}
     public void setBuysFile(File file){
         this.buyfile=file;
     }
+    public File getBuysFile(){
+        return this.buyfile;
+    }
     public void setPurchasesFile(File file){
         this.purchasefile=file;
+    }
+    public File getPurchasesFile(){
+        return this.purchasefile;
     }
 }

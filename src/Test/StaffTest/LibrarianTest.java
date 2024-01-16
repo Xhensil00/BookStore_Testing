@@ -15,12 +15,12 @@ public class LibrarianTest {
     public void testLibrarianCreation() {
 
         Librarian librarian = new Librarian(
-                "Jane Doe", "1234567890", "jane@example.com", "1990-01-01",
+                "Jaran Dosja", "1234567890", "jane@example.com", "1990-01-01",
                 Gender.FEMALE, 55000, "passLibrarian", ACCESSLEVEL.LIBRARIAN, true
         );
 
         assertNotNull(librarian);
-        assertEquals("Jane Doe", librarian.getFullName());
+        assertEquals("Jaran Dosja", librarian.getFullName());
         assertEquals("jane@example.com", librarian.getEmail());
         assertTrue(librarian.isPermitionToBill());
     }
@@ -33,6 +33,23 @@ public class LibrarianTest {
                 Gender.MALE, 60000, "pass123", ACCESSLEVEL.LIBRARIAN, true
         );
         librarian.interact();;
+    }
+    @Test
+    public void testIsPermitionToBill() {
+        Librarian librarian = new Librarian(
+                "Jaran Dosja", "1234567890", "jane@example.com", "1990-01-01",
+                Gender.FEMALE, 55000, "passLibrarian", ACCESSLEVEL.LIBRARIAN, true
+        );
+        assertTrue(librarian.isPermitionToBill());
+    }
+    @Test
+public void testSetPermitionToBill() {
+        Librarian librarian = new Librarian(
+                "Jaran Dosja", "1234567890", "jane@example.com", "1990-01-01",
+                Gender.FEMALE, 55000, "passLibrarian", ACCESSLEVEL.LIBRARIAN, true
+        );
+        librarian.setPermitionToBill(false);
+        assertFalse(librarian.isPermitionToBill());
     }
 }
 

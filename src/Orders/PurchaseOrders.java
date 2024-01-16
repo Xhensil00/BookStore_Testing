@@ -30,6 +30,11 @@ public class PurchaseOrders implements Serializable{
         addToDatabase();
         }
     }
+
+    public static boolean getTesting() {
+        return testing;
+    }
+
     public void setTxtFile(File file){
         this.file=file;
     }
@@ -93,5 +98,12 @@ public class PurchaseOrders implements Serializable{
 
         
     }
-    
+
+    public File getTxtFile() {
+        return this.file;
+    }
+
+    public File getDataFile() {
+        return this.purchasefile;
+    }
 }

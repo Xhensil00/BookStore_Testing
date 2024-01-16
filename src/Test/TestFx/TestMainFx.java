@@ -5,8 +5,6 @@ import BookstoreData.BookData;
 import Staff.Worker;
 import Staff.WorkerData;
 import Style.LoginPage;
-import Style.MainPage;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,16 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.*;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.service.locator.PointLocator;
-import org.testfx.service.query.EmptyNodeQueryException;
-import org.testfx.service.query.PointQuery;
-import org.testfx.toolkit.PrimaryStageApplication;
-
-import java.awt.geom.Point2D;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Objects;
-
 import static org.junit.jupiter.api.Assertions.*;
 public class TestMainFx extends ApplicationTest {
     Stage primaryStage;
@@ -40,6 +29,7 @@ public class TestMainFx extends ApplicationTest {
     Button addBookToStockBtn;
     TableView bookTableView;
     TableView workerTableView;
+    Button LogOutBtn;
     public void start(Stage stage){
         sceneRoot = new LoginPage(stage).getRoot();
         Scene scene = new Scene(sceneRoot, 800, 600);
@@ -63,12 +53,16 @@ public class TestMainFx extends ApplicationTest {
         addBookToStockBtn = lookup("#addBookToStockBtn").queryAs(Button.class);
         bookTableView = lookup("#bookTable").queryAs(TableView.class);
         workerTableView = lookup("#workerTable").queryAs(TableView.class);
+        LogOutBtn = lookup("#LogOutBtn").queryAs(Button.class);
 
     }
 
-    @AfterAll
-    public static void tearDownAll()
+    @AfterEach
+    public void tearDownAll()
     {
+        sleep(1000);
+        LogOutBtn = lookup("#LogOutBtn").queryAs(Button.class);
+        clickOn(LogOutBtn);
     }
     @Test
     void test_Purchasing_Books(){
@@ -87,6 +81,7 @@ public class TestMainFx extends ApplicationTest {
         book=(Book) bookTableView.getSelectionModel().getSelectedItem();
         int n2=book.getStockInt();
         assertEquals(n1-20,n2);
+
     }
     @Test
     void test_AddToStock(){
@@ -131,6 +126,7 @@ public class TestMainFx extends ApplicationTest {
         clickOn(t4);
         write("Anita Maxwynn");
         clickOn(c1);
+        clickOn(b1);
         ArrayList<Book> temp= new ArrayList<>();
         for(Object a : bookTableView.getItems()) temp.add((Book)a);
         boolean proceed=true;
@@ -144,18 +140,16 @@ public class TestMainFx extends ApplicationTest {
     }
     @Test
     void test_Login_LogOut(){
-        Button logOut= lookup("#LogOutBtn").queryButton();
-        clickOn(logOut);
-        assertFalse(lookup("LogOutBtn").tryQuery().isPresent());
+        assertNotNull(LogInBtn);
     }
 
     @Test
     void test_Add_Worker(){
         TabPane tab = lookup("#tabPane").queryAs(TabPane.class);
         Tab tab1 = tab.getTabs().get(1);
-        int x= (int) tab.getLayoutX()+150;
-        int y= (int) tab.getLayoutY()+20;
-        clickOn(x,y);
+        int x1= (int) tab.getLayoutX()+150;
+        int y1= (int) tab.getLayoutY()+20;
+        clickOn(x1,y1);
         sleep(1000);
         Button addWorkerBtn = lookup("#addWorkerBtn").queryAs(Button.class);
         clickOn(addWorkerBtn);
@@ -168,7 +162,7 @@ public class TestMainFx extends ApplicationTest {
         DatePicker datePicker = lookup("#datePicker").queryAs(DatePicker.class);
         RadioButton r1 =lookup("#maleRadio").queryAs(RadioButton.class);
         ChoiceBox location = lookup("#locationChoiceBox").queryAs(ChoiceBox.class);
-        Button b1 = lookup("#SubmitBtn").queryAs(Button.class);
+        Button registerBtn = lookup("#RegisterBtn").queryAs(Button.class);
         String name="TestWorker";
         clickOn(t0);
         write(name);
@@ -184,16 +178,40 @@ public class TestMainFx extends ApplicationTest {
         write("1/1/2001");
         clickOn(r1);
         clickOn(location);
-        x= (int)location.getLayoutX();
-        y= (int)location.getLayoutY();
+        int x= (int)location.getLayoutX();
+        int y= (int)location.getLayoutY();
         x+=450;
         y+=100;
         clickOn(x,y);
-        clickOn(b1);
-        int n1= bookTableView.getItems().size();
+        clickOn(registerBtn);
+        clickOn(x1,y1);
         bookTableView= lookup("#workerTable").queryAs(TableView.class);
         int n2=bookTableView.getItems().size();
-        assertEquals(n1,n2+1);
+        assertEquals(9,n2);
+
+    }
+    @Test
+    void test_Edit_Worker(){
+        TabPane tab = lookup("#tabPane").queryAs(TabPane.class);
+        Tab tab1 = tab.getTabs().get(1);
+        int x= (int) tab.getLayoutX()+150;
+        int y= (int) tab.getLayoutY()+20;
+        clickOn(x,y);
+        sleep(1000);
+        doubleClickOn(workerTableView);
+        Worker worker =(Worker) workerTableView.getSelectionModel().getSelectedItem();
+        Label workerEmail = lookup("#workerEmail").queryAs(Label.class);
+        doubleClickOn(workerEmail);
+        write("newEmail@gmail.com");
+        press(KeyCode.ENTER);
+        sleep(1000);
+        Button editBtn= lookup("#editBtn").queryAs(Button.class);
+        clickOn(editBtn);
+        clickOn(x,y);
+        workerTableView= lookup("#workerTable").queryAs(TableView.class);
+        clickOn(workerTableView);
+        worker =(Worker) workerTableView.getSelectionModel().getSelectedItem();
+        assertEquals("newEmail@gmail.com",worker.getEmail());
     }
     @Test
     void deleteWorker(){

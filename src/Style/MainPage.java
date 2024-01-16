@@ -165,6 +165,7 @@ public class MainPage{
         //Top Pane
         top = new HBox(500);
         Button LogOutBtn = new Button("Log Out");
+        LogOutBtn.setId("LogOutBtn");
         LogOutBtn.setStyle(styles.getLogOutBtnStyle());
 
         HBox searchBox = new HBox(15);
@@ -588,6 +589,7 @@ public class MainPage{
             deletWorkerBtn.setDisable(true);
         }
         Button editWorkerBtn = new Button("Edit Worker");
+        editWorkerBtn.setId("editBtn");
         editWorkerBtn.setStyle(styles.getLogOutBtnStyle());
         if(!(worker.getACCESSLEVEL().toString().equals("ADMIN"))){
             editWorkerBtn.setDisable(true);
@@ -607,7 +609,7 @@ public class MainPage{
             primaryStage.setScene(new Scene(new MainPage(primaryStage, this.worker).getRoot(),800, 600));
             primaryStage.setMaximized(true);
         });
-
+        workerEmail.setId("workerEmail");
         workerEmail.setOnMouseClicked(e -> {
             grid.getChildren().remove(workerEmail);
             grid.add(newEmail, 0, 1);
